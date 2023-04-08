@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 // ERRORS MESSAGES
-#define ERROR_EXEC "Error: Execv execution was not complete as expected"
+#define ERROR_EXEC "Error: execv() execution was not complete as expected"
 
 /**
  * This method writes a message error, but in this case is related directly 
