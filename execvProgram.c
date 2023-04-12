@@ -10,6 +10,7 @@
 // INCLUDE
 #include <unistd.h> 
 #include <errno.h>
+#include <stdio.h> 
 
 // ADDITIONAL INCLUDES
 #include <string.h>
@@ -20,7 +21,7 @@
 
 /**
  * This method writes a message error, but in this case is related directly 
- * to the system error. It uses 'errno' to know the related error. It writes a
+ * to the system error. It uses perror() function to know the related error. It writes a
  * custom message and the system error using the standard errors channel (channel 2).
  * 
  * Finally ends the execution with EXIT_FAILURE = 1
@@ -32,8 +33,9 @@ void error(char *message)
     // Write errors using standard errors channel (channel 2)
     write(2, message, strlen(message));
     write(2, "\n", 1);
-    write(2, strerror(errno), strlen(strerror(errno)));
-    write(2, "\n", 1);
+
+    // Using perror() function to identify the execv error
+    perror("execv");
     exit(EXIT_FAILURE);
 }
 
